@@ -3,6 +3,13 @@ import '../Componenets/Editor.dart';
 import '../Componenets/CaixaDialogo.dart';
 import '../Models/Transferencia.dart';
 
+const _tituloAppBar = 'Criando Transferência';
+const _dicaValor = '0.00';
+const _dicaConta = '0.00';
+const _rotuloValor = 'Valor';
+const _rotuloConta = 'Número da conta';
+const _textBotaoConfirmar = 'Confirmar';
+
 class FormularioTransferencia extends StatefulWidget {
   final TextEditingController _controladorCampoNumeroConta =
       TextEditingController();
@@ -19,24 +26,24 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Criando Transferência'),
+        title: Text(_tituloAppBar),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Editor(
               controlador: widget._controladorCampoNumeroConta,
-              rotulo: 'Numero da conta',
-              dica: '0000',
+              rotulo: _rotuloConta,
+              dica: _dicaConta,
             ),
             Editor(
               controlador: widget._controladorCampoValor,
-              rotulo: 'Valor',
-              dica: '0.00',
+              rotulo: _rotuloValor,
+              dica: _dicaValor,
               icone: Icons.monetization_on,
             ),
             RaisedButton(
-              child: Text('Confirmar'),
+              child: Text(_textBotaoConfirmar),
               onPressed: () {
                 criaTransferencia(context);
               },
