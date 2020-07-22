@@ -1,7 +1,17 @@
+import 'package:bytebank/DataBase/CriaBanco.dart';
+import 'package:bytebank/Models/Contato.dart';
 import 'package:bytebank/Screens/Dashboard.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(BytebankApp());
+void main() {
+  runApp(BytebankApp());
+  insertContato(Contato(1, 'Beatriz', 1000)).then((IdContato) {
+    selectContatos().then((contatos) {
+      debugPrint(
+          'id: $contatos.IdContato, nome: $contatos.nome, conta: $contatos.numeroConta');
+    });
+  });
+}
 
 //Tela Inicial
 class BytebankApp extends StatelessWidget {
