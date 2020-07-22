@@ -15,11 +15,30 @@ Future<Database> criaBanco() {
   });
 }
 
-void insertContato(Contato contato) {
+Future<Database> insertContato(Contato contato) {
   criaBanco().then((caminhoBanco) {
     final Map<String, dynamic> mapaContato = Map();
 
-    mapaContato['IdContato'] = contato.IdContato;
-    caminhoBanco.insert('Contatos', mapaContato);
+    mapaContato['Nome'] = contato.nome;
+    mapaContato['NumeroConta'] = contato.numeroConta;
+
+    return caminhoBanco.insert('Contatos', mapaContato);
+  });
+}
+
+Future<List<Contato>> selectContatos() {
+  criaBanco().then((db) {
+    return db.query('Contatos').then((maps) {
+      final List<Contato> contatosBanco = List();
+      for (Map<String, dynamic> map in maps) {
+        final Contato contato = Contato(
+          map['IdContato'],
+          map['nome'],
+          map['numeroConta'],
+        );
+        contatosBanco.add(contato);
+      }
+      return contatosBanco;
+    });
   });
 }
