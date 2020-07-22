@@ -1,27 +1,28 @@
+import 'package:bytebank/Componenets/EditorNumero.dart';
+import 'package:bytebank/Models/Contato.dart';
 import 'package:flutter/material.dart';
 import '../Componenets/EditorTexto.dart';
 import '../Componenets/CaixaDialogo.dart';
-import '../Models/Transferencia.dart';
 
-const _tituloAppBar = 'Criando Transferência';
-const _dicaValor = '0.00';
-const _dicaConta = '0.00';
-const _rotuloValor = 'Valor';
+const _tituloAppBar = 'Adicionar Contato';
+const _dicaNome = 'Fulano de Tal';
+const _dicaConta = '0000';
+const _rotuloNome = 'Nome';
 const _rotuloConta = 'Número da conta';
-const _textBotaoConfirmar = 'Confirmar';
+const _textBotaoConfirmar = 'Adicionar';
 
-class FormularioTransferencia extends StatefulWidget {
+class FormularioContatos extends StatefulWidget {
   final TextEditingController _controladorCampoNumeroConta =
       TextEditingController();
-  final TextEditingController _controladorCampoValor = TextEditingController();
+  final TextEditingController _controladorCampoNome = TextEditingController();
 
   @override
   State<StatefulWidget> createState() {
-    return FormularioTransferenciaState();
+    return FormularioContatosState();
   }
 }
 
-class FormularioTransferenciaState extends State<FormularioTransferencia> {
+class FormularioContatosState extends State<FormularioContatos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,20 +33,19 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
         child: Column(
           children: <Widget>[
             EditorTexto(
+              controlador: widget._controladorCampoNome,
+              rotulo: _rotuloNome,
+              dica: _dicaNome,
+            ),
+            EditorNumero(
               controlador: widget._controladorCampoNumeroConta,
               rotulo: _rotuloConta,
               dica: _dicaConta,
             ),
-            EditorTexto(
-              controlador: widget._controladorCampoValor,
-              rotulo: _rotuloValor,
-              dica: _dicaValor,
-              icone: Icons.monetization_on,
-            ),
             RaisedButton(
               child: Text(_textBotaoConfirmar),
               onPressed: () {
-                criaTransferencia(context);
+                criaContato(context);
               },
             )
           ],
@@ -54,13 +54,13 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
     );
   }
 
-  void criaTransferencia(BuildContext context) {
+  void criaContato(BuildContext context) {
     final int numeroConta =
         int.tryParse(widget._controladorCampoNumeroConta.text);
-    final double valor = double.tryParse(widget._controladorCampoValor.text);
-    if (numeroConta != null && valor != null) {
-      final transferenciaCriada = Transferencia(valor, numeroConta);
-      Navigator.pop(context, transferenciaCriada);
+    final String nome = widget._controladorCampoNome.text;
+    if (numeroConta != null && nome != null) {
+      final ContatoCriado = Contato(0, nome, numeroConta);
+      Navigator.pop(context, ContatoCriado);
     } else {
       showAlertDialog(context);
     }
