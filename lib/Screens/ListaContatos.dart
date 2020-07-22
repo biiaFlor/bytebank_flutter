@@ -28,11 +28,15 @@ class ListaContatos extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => FormularioContatos(),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => FormularioContatos(),
+                ),
+              )
+              .then(
+                (ContatoCriado) => debugPrint(ContatoCriado.toString()),
+              );
         },
         child: Icon(Icons.add),
       ),

@@ -1,14 +1,15 @@
 import 'package:bytebank/Componenets/EditorNumero.dart';
+import 'package:bytebank/Models/Contato.dart';
 import 'package:flutter/material.dart';
 import '../Componenets/EditorTexto.dart';
 import '../Componenets/CaixaDialogo.dart';
 
 const _tituloAppBar = 'Adicionar Contato';
-const _dicaNome = 'Beatriz Silvestre Flor';
+const _dicaNome = 'Fulano de Tal';
 const _dicaConta = '0000';
 const _rotuloNome = 'Nome';
 const _rotuloConta = 'Número da conta';
-const _textBotaoConfirmar = 'Confirmar';
+const _textBotaoConfirmar = 'Adicionar';
 
 class FormularioContatos extends StatefulWidget {
   final TextEditingController _controladorCampoNumeroConta =
@@ -43,11 +44,25 @@ class FormularioContatosState extends State<FormularioContatos> {
             ),
             RaisedButton(
               child: Text(_textBotaoConfirmar),
-              onPressed: () {},
+              onPressed: () {
+                criaContato(context);
+              },
             )
           ],
         ),
       ),
     );
+  }
+
+  void criaContato(BuildContext context) {
+    final int numeroConta =
+        int.tryParse(widget._controladorCampoNumeroConta.text);
+    final String nome = widget._controladorCampoNome.text;
+    if (numeroConta != null && nome != null) {
+      final ContatoCriado = Contato(0, nome, numeroConta);
+      Navigator.pop(context, ContatoCriado);
+    } else {
+      showAlertDialog(context);
+    }
   }
 }
