@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Componenets/Editor.dart';
+import '../Componenets/EditorTexto.dart';
 import '../Componenets/CaixaDialogo.dart';
 import '../Models/Transferencia.dart';
 
@@ -31,12 +31,12 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Editor(
+            EditorTexto(
               controlador: widget._controladorCampoNumeroConta,
               rotulo: _rotuloConta,
               dica: _dicaConta,
             ),
-            Editor(
+            EditorTexto(
               controlador: widget._controladorCampoValor,
               rotulo: _rotuloValor,
               dica: _dicaValor,

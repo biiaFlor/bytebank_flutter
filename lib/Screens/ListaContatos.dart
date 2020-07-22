@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'FormularioContatos.dart';
 
 const _tituloAppBar = "Lista de Contatos";
 
@@ -26,7 +27,13 @@ class ListaContatos extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => FormularioContatos(),
+            ),
+          );
+        },
         child: Icon(Icons.add),
       ),
     );
