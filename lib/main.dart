@@ -1,5 +1,5 @@
+import 'package:bytebank/Screens/Dashboard.dart';
 import 'package:flutter/material.dart';
-import 'Screens/ListaTransferencia.dart';
 
 void main() => runApp(BytebankApp());
 
@@ -9,7 +9,7 @@ class BytebankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: ListaTransferencias(),
+      home: Dashboard(),
     );
   }
 }
