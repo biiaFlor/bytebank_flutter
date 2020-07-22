@@ -1,5 +1,5 @@
+import 'package:bytebank/Screens/Dashboard.dart';
 import 'package:flutter/material.dart';
-import 'Screens/Dashboard.dart';
 
 void main() => runApp(BytebankApp());
 
