@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const _tituloAppBar = "Dashboard";
 
-class TelaInicial extends StatelessWidget {
+class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
