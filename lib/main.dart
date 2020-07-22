@@ -6,10 +6,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(BytebankApp());
   insertContato(Contato(1, 'Beatriz', 1000)).then((IdContato) {
-    selectContatos().then((contatos) {
-      debugPrint(
-          'id: $contatos.IdContato, nome: $contatos.nome, conta: $contatos.numeroConta');
-    });
+    selectContatos().then((contatos) {});
   });
 }
 
