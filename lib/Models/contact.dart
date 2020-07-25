@@ -1,4 +1,5 @@
 class Contact {
+  @override
   final int id;
   final String name;
   final int accountNumber;

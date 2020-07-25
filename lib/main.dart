@@ -1,18 +1,17 @@
-import 'package:bytebank/database/app_database.dart';
-import 'package:bytebank/screens/contact_form.dart';
-import 'package:bytebank/screens/contacts_list.dart';
+import 'dart:io';
 import 'package:bytebank/screens/dashboard.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'models/contact.dart';
-
 void main() {
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.dumpErrorToConsole(details);
+    if (kReleaseMode) exit(1);
+  };
   runApp(BytebankApp());
-  findAll().then((contacts) => debugPrint(contacts.toString()));
 }
 
 class BytebankApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

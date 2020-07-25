@@ -42,7 +42,7 @@ class Dashboard extends StatelessWidget {
                         size: 24.0,
                       ),
                       Text(
-                        'Contacts',
+                        'Contatos',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.0,
