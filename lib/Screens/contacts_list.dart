@@ -12,15 +12,11 @@ class ContactsList extends StatelessWidget {
       ),
       body: FutureBuilder<List<Contact>>(
         initialData: List(),
-        future: Future.delayed(Duration(seconds: 0)).then((value) {
-          findAll();
-        }),
+        future: Future.delayed(Duration(seconds: 0)).then((value) => findAll()),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
-            case ConnectionState.none:
-              break;
             case ConnectionState.waiting:
-              Center(
+              return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,12 +27,10 @@ class ContactsList extends StatelessWidget {
                 ),
               );
               break;
-            case ConnectionState.active:
-              break;
             case ConnectionState.done:
               if (snapshot.data != null) {
                 final List<Contact> contacts = snapshot.data;
-                ListView.builder(
+                return ListView.builder(
                   itemBuilder: (context, index) {
                     final Contact contact = contacts[index];
                     return _ContactItem(contact);
