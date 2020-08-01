@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Models/contact.dart';
 import '../DataBase/app_database.dart';
+import '../Componenets/CaixaDialogo.dart';
 
 class ContactForm extends StatefulWidget {
   @override
@@ -53,7 +54,12 @@ class _ContactFormState extends State<ContactForm> {
                     final int accountNumber =
                         int.tryParse(_accountNumberController.text);
                     final Contact newContact = Contact(0, name, accountNumber);
-                    save(newContact).then((id) => Navigator.pop(context));
+                    if (newContact.accountNumber != null &&
+                        newContact.name != "") {
+                      save(newContact).then((id) => Navigator.pop(context));
+                    } else {
+                      showAlertDialog(context);
+                    }
                   }),
             )
           ],
