@@ -48,19 +48,21 @@ class _ContactFormState extends State<ContactForm> {
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: RaisedButton(
-                  child: Text('Adicionar'),
-                  onPressed: () {
-                    final String name = _nameController.text;
-                    final int accountNumber =
-                        int.tryParse(_accountNumberController.text);
-                    final Contact newContact = Contact(0, name, accountNumber);
-                    if (newContact.accountNumber != null &&
-                        newContact.name != "") {
-                      save(newContact).then((id) => Navigator.pop(context));
-                    } else {
-                      showAlertDialog(context);
-                    }
-                  }),
+                child: Text('Adicionar'),
+                onPressed: () {
+                  final String name = _nameController.text;
+                  final int accountNumber =
+                      int.tryParse(_accountNumberController.text);
+                  final Contact newContact = Contact(0, name, accountNumber);
+
+                  if (newContact.name != "" &&
+                      newContact.accountNumber != null) {
+                    save(newContact).then((id) => Navigator.pop(context));
+                  } else {
+                    showAlertDialog(context);
+                  }
+                },
+              ),
             )
           ],
         ),
