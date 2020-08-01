@@ -1,5 +1,5 @@
-import 'package:bytebank/models/contact.dart';
 import 'package:flutter/material.dart';
+import '../Models/contact.dart';
 
 class ContactForm extends StatefulWidget {
   @override

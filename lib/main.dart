@@ -1,13 +1,8 @@
-import 'dart:io';
-import 'package:bytebank/screens/dashboard.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'Screens/Dashboard.dart';
+
 void main() {
-  FlutterError.onError = (FlutterErrorDetails details) {
-    FlutterError.dumpErrorToConsole(details);
-    if (kReleaseMode) exit(1);
-  };
   runApp(BytebankApp());
 }
 

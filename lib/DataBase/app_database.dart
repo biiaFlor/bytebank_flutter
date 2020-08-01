@@ -1,4 +1,4 @@
-import 'package:bytebank/models/contact.dart';
+import '../Models/contact.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -23,7 +23,7 @@ Future<int> save(Contact contact) {
   });
 }
 
-Future<List<Contact>> findAll() {
+Future<List<Contact>> findAll() async {
   return createDatabase().then((db) {
     return db.query('contacts').then((maps) {
       final List<Contact> contacts = List();

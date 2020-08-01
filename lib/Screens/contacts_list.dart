@@ -1,7 +1,8 @@
-import 'package:bytebank/DataBase/app_database.dart';
 import 'package:bytebank/Models/contact.dart';
-import 'package:bytebank/screens/contact_form.dart';
 import 'package:flutter/material.dart';
+import '../DataBase/app_database.dart';
+
+import 'contact_form.dart';
 
 class ContactsList extends StatelessWidget {
   @override
@@ -12,8 +13,7 @@ class ContactsList extends StatelessWidget {
       ),
       body: FutureBuilder<List<Contact>>(
         initialData: List(),
-        future: Future.delayed(Duration(seconds: 0)).then((value) {}),
-        // future: Future.delayed(Duration(seconds: 0)).then((value) => findAll()),
+        future: Future.delayed(Duration(seconds: 0)).then((value) => findAll()),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
