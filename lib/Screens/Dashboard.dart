@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'contacts_list.dart';
+import 'transactions_list.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -33,7 +34,7 @@ class Dashboard extends StatelessWidget {
                     _FeatureItem(
                       'Transation Feed',
                       Icons.description,
-                      onClick: () => print('Entrou'),
+                      onClick: () => _showTransactionsList(context),
                     ),
                   ],
                 ),
@@ -51,7 +52,9 @@ class _FeatureItem extends StatelessWidget {
   final IconData icon;
   final Function onClick;
 
-  _FeatureItem(this.name, this.icon, {@required this.onClick});
+  _FeatureItem(this.name, this.icon, {@required this.onClick})
+      : assert(icon != null), //Impede a inserção de valores nulos
+        assert(onClick != null);
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +99,14 @@ void _showContactsList(BuildContext context) {
   Navigator.of(context).push(
     MaterialPageRoute(
       builder: (context) => ContactsList(),
+    ),
+  );
+}
+
+void _showTransactionsList(BuildContext context) {
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => TransactionsList(),
     ),
   );
 }
