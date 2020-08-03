@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Models/contact.dart';
-import '../DataBase/app_database.dart';
+import '../DataBase/DAO/contact_dao.dart';
 import '../Componenets/CaixaDialogo.dart';
 
 class ContactForm extends StatefulWidget {
@@ -12,6 +12,7 @@ class _ContactFormState extends State<ContactForm> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _accountNumberController =
       TextEditingController();
+  final ContactDao _dao = ContactDao();
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,7 @@ class _ContactFormState extends State<ContactForm> {
 
                   if (newContact.name != "" &&
                       newContact.accountNumber != null) {
-                    save(newContact).then((id) => Navigator.pop(context));
+                    _dao.save(newContact).then((id) => Navigator.pop(context));
                   } else {
                     showAlertDialog(context);
                   }
