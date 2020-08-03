@@ -1,14 +1,12 @@
-import 'package:bytebank/Screens/ListaContatos.dart';
 import 'package:flutter/material.dart';
-
-const _tituloAppBar = "Dashboard";
+import 'contacts_list.dart';
 
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_tituloAppBar),
+        title: Text('Dashboard'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -21,11 +19,12 @@ class Dashboard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Material(
+              color: Theme.of(context).primaryColor,
               child: InkWell(
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => ListaContatos(),
+                      builder: (context) => ContactsList(),
                     ),
                   );
                 },
@@ -33,7 +32,6 @@ class Dashboard extends StatelessWidget {
                   padding: EdgeInsets.all(8.0),
                   height: 100,
                   width: 150,
-                  color: Colors.green,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +47,7 @@ class Dashboard extends StatelessWidget {
                           color: Colors.white,
                           fontSize: 16.0,
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
