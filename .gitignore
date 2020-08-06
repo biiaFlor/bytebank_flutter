@@ -8,7 +8,7 @@
 .buildlog/
 .history
 .svn/
-.main/db.lck
+bytebank-api-runnable/database/main/db.lck
 
 # IntelliJ related
 *.iml
